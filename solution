@@ -1,0 +1,145 @@
+1)
+import math
+import os
+import random
+import re
+import sys
+
+
+def solve(s):
+    return ' '.join(word.capitalize() for word in s.split(' '))
+   
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    s = input()
+    result = solve(s)
+
+
+
+2)
+def average(array):
+     distinct = set(array)
+     return round(sum(distinct) / len(distinct), 3)
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
+
+
+
+3)
+import textwrap
+
+def wrap(string, max_width):
+    return '\n'.join(textwrap.wrap(string, max_width))
+
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
+
+
+4)
+def print_rangoli(size):
+    import string
+    alpha = string.ascii_lowercase
+
+    lines = []
+    for i in range(size):
+        
+        left = alpha[size-1:i:-1]
+        right = alpha[i:size]
+        row = '-'.join(left + right)
+        lines.append(row.center(4*size - 3, '-'))
+
+    full_rangoli = lines[::-1] + lines[1:]
+
+    print('\n'.join(full_rangoli))
+
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
+
+
+
+5)
+def merge_the_tools(string, k):
+    
+    for i in range(0, len(string), k):
+        substring = string[i:i+k]
+        seen = ''
+        for char in substring:
+            if char not in seen:
+                seen += char
+        print(seen)
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+
+
+
+6)
+from collections import Counter
+
+x = int(input())  
+shoe_sizes = list(map(int, input().split()))  
+n = int(input())  
+inventory = Counter(shoe_sizes)
+
+earnings = 0
+
+for _ in range(n):
+    size, price = map(int, input().split())
+    if inventory[size] > 0:
+        earnings += price
+        inventory[size] -= 1  
+
+print(earnings)
+
+
+7)
+t = int(input())
+
+for _ in range(t):
+    try:
+        a, b = input().split()
+        print(int(a) // int(b))
+    except (ValueError, ZeroDivisionError) as e:
+        print("Error Code:", e)
+
+
+8)
+import re
+n = int(input())
+
+for _ in range(n):
+    pattern = input()
+    try:
+        re.compile(pattern)
+        print("True")
+    except re.error:
+        print("False")
+
+9)
+n = int(input())
+s = set(map(int, input().split()))
+N = int(input())
+
+for _ in range(N):
+    cmd = input().split()
+    if cmd[0] == "pop":
+        s.remove(next(iter(s))) 
+    elif cmd[0] == "remove":
+        s.remove(int(cmd[1]))
+    elif cmd[0] == "discard":
+        s.discard(int(cmd[1]))
+print(sum(s))
+
+
+
+
+
+
